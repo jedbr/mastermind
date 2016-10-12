@@ -11,7 +11,7 @@ class Mastermind
   end
 
   def play
-    while !@game_won && @turn < 8
+    until @game_won || @turn > 7
       @board.print_board
       make_guess
       @board.add_and_validate(@guess)
@@ -29,5 +29,6 @@ class Mastermind
 
   def finish_game
     @board.print_board
+    @game_won ? 'Congratulations, you have won!' : 'You lose!'
   end
 end
