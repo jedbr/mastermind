@@ -29,6 +29,7 @@ class Mastermind
 
   def finish_game
     @board.print_board
-    @game_won ? 'Congratulations, you have won!' : 'You lose!'
+    puts "Code: #{@board.code.join(' ')}"
+    puts @game_won ? 'Congratulations, you have won!' : 'You lose!'
   end
 end

@@ -1,6 +1,5 @@
 class Mastermind
   class Board
-    attr_accessor :board
     attr_reader :code
 
     def initialize(parent)
@@ -14,15 +13,19 @@ class Mastermind
     end
 
     def print_board
-      system('clear')
-      puts '------------------'
-      puts @code.join(' ')
-      @board.each_with_index do |row, i|
-        print "Turn: #{i + 1} | #{row.join(' ')} | "\
-              "Color and position: #{@hits[i][:color_and_position]} hits | "\
-              "Color only: #{@hits[i][:color_only]} hits\n"
-      end if @board.first
-      puts '------------------'
+      system('clear') || system('cls')
+      if @board.first
+        puts '------------------'
+        @board.each_with_index do |row, i|
+          print "Turn: #{i + 1} | #{row.join(' ')} | "\
+                "Color and position: #{@hits[i][:color_and_position]} hits | "\
+                "Color only: #{@hits[i][:color_only]} hits\n"
+        end
+        puts '------------------'
+      else
+        puts "Welcome to Mastermind!\nYou have 8 turns to break the code, "\
+             "good luck!"
+      end
     end
 
     def add_and_validate(guess)
